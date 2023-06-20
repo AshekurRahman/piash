@@ -17,6 +17,7 @@ Ajax Contact Form
     var $form = $('.contact__form');
 
     $form.submit(function (e) {
+
         // remove the error class
         $('.form-box').removeClass('has-error');
         $('.help-block').remove();
@@ -29,6 +30,7 @@ Ajax Contact Form
             'message' : $('textarea[name="form-message"]').val()
         };
 
+        console.log(formData);
         // process the form
         $.ajax({
             type : 'POST',
@@ -43,7 +45,7 @@ Ajax Contact Form
                     $('#form-name').parent('.form-box').addClass('has-error');
                     $('#form-name').parent('.form-box').append('<div class="help-block">' + data.errors.name + '</div>');
                 }
-
+                
                 if (data.errors.email) {
                     $('#form-email').parent('.form-box').addClass('has-error');
                     $('#form-email').parent('.form-box').append('<div class="help-block">' + data.errors.email + '</div>');
